@@ -2,22 +2,36 @@
   text-align: center;
 }
 
-.App .Navigation-Bar {
-  position: relative;
+.App .Navigation-Bar ul img{
+  display: flex;
+  height: 6vh;
+  justify-content: flex-start;
 }
 
 .App .Navigation-Bar ul li a{
-  text-align: left;
   color: red;
-  padding: 3vh;
-  border-radius: 3vh;
-  border-color: black;
+  text-decoration: none;
+}
+
+.App .Navigation-Bar ul li:hover{
+  background-color: #8a898931;
+  transition: 1s;
+}
+
+.App .Navigation-Bar ul li{
+  list-style: none;
+  padding: 2vh 4vh;
+  white-space: 10;
+}
+
+.App .Navigation-Bar ul{
   display: flex;
+  justify-content: flex-end;
 }
 
 .App-header {
   background-color: #000000;
-  min-height: 100vh;
+  min-height: 87.5vh;
   display: flex;
   flex-direction: column;
   align-items: center;

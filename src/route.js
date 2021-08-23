@@ -5,7 +5,7 @@ export function Home() {
     return (
       <header className="App-header">
         <p>
-          Paragraph 1
+          Home Page
         </p>
       </header>
     );
@@ -15,7 +15,7 @@ export function About() {
     return (
       <header className="App-header">
         <p>
-          Paragraph aye
+          About Page
         </p>
       </header>
     );
