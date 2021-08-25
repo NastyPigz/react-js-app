@@ -1,0 +1,32 @@
+
+.App .Navigation-Bar div img{
+  height: 7.5vh;
+  margin: 3vh 3vh 0vh 3vh;
+  border-radius: 3vw;
+}
+
+.App .Navigation-Bar ul li a{
+  color: red;
+  text-decoration: none;
+}
+
+.App .Navigation-Bar ul li:hover{
+  background-color: #8a898931;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.App .Navigation-Bar ul li{
+  list-style: none;
+  padding: 2vh 4vh;
+}
+
+.App .Navigation-Bar div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.App .Navigation-Bar div ul{
+  display: flex;
+}
+  

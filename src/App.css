@@ -2,33 +2,6 @@
   text-align: center;
 }
 
-.App .Navigation-Bar ul img{
-  display: flex;
-  height: 6vh;
-  justify-content: flex-start;
-}
-
-.App .Navigation-Bar ul li a{
-  color: red;
-  text-decoration: none;
-}
-
-.App .Navigation-Bar ul li:hover{
-  background-color: #8a898931;
-  transition: 1s;
-}
-
-.App .Navigation-Bar ul li{
-  list-style: none;
-  padding: 2vh 4vh;
-  white-space: 10;
-}
-
-.App .Navigation-Bar ul{
-  display: flex;
-  justify-content: flex-end;
-}
-
 .App-header {
   background-color: #000000;
   min-height: 87.5vh;
@@ -38,4 +11,27 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* text-elements {
+  overflow-wrap:break-word;
+  
+  Used for automatically starting new lines.
+
+} */
+
+#annoying {
+  top: 30vh;
+  left: 20vh;
+  position: fixed;
+  background-color: #ffffff;
 }

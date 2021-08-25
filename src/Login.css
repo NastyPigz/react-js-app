@@ -1,0 +1,44 @@
+.App .loginFormDiv {
+    padding: 3vh 35vw;
+    background-color: #88858563;
+    margin: 10vh 10vw;
+}
+
+.App .loginFormDiv .loginFormContent{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    width: 100%;
+}
+
+.App .loginFormDiv .loginFormInput{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.App .loginFormDiv input[type="text"], .App .loginFormDiv input[type="password"] {
+    padding: 0.75vh 0.75vw;
+    margin: 1vh 1vw;
+}
+
+.App .loginFormDiv input[type="text"]:focus, .App .loginFormDiv input[type="password"]:focus {
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+    padding: 0.75vh 0.75vw;
+    margin: 1vh 1vw;
+}
+
+.App .loginFormDiv label {
+    padding: 0.75vh 0.75vw;
+}
+
+.App .loginFormDiv .loginBtn {
+    padding: 0.75vh 0.75vw;
+    background-color: #3d1fe7a6;
+    margin: 1vh 4vw;
+    color: #ffffff;
+    /* border-radius: 20%; */
+}

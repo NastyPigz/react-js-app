@@ -12,11 +12,13 @@ export function NavBar(props) {
         );
     });
     return (
-        <div className="Navigation-Bar">
-            <ul>
-                <img src="https://www2.deloitte.com/content/dam/Deloitte/global/Images/promo_images/gx-lshc-global-health-care-p.jpg"></img>
-                {arr}
-            </ul>
-        </div>
+        <nav className="Navigation-Bar" id="navigationBar">
+            <div>
+                <img alt="Placeholder" src="https://www2.deloitte.com/content/dam/Deloitte/global/Images/promo_images/gx-lshc-global-health-care-p.jpg"></img>
+                <ul>
+                    {arr}
+                </ul>
+            </div>
+        </nav>
     )
 }

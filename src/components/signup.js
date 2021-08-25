@@ -25,7 +25,7 @@ export class SignUpDiv extends React.Component {
 
     render() {
         return (
-            <div id="signupForm" className="signupFormDiv" style={{display:"none"}}>
+            <div id="signupForm" className="signupFormDiv">
                 <form className="signupFormContent" onSubmit={this.signupSubmit}>
                     <div className="signupFormInput">
                         <h1>To sign up please fill in the information below.</h1>
