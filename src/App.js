@@ -1,6 +1,7 @@
 import './App.css';
 import './Nav.css';
 import './Login.css';
+import './SignUp.css';
 import {Home, About, Login, SignUp} from './route.js';
 import {
   BrowserRouter as Router,
@@ -13,25 +14,38 @@ import {Footer} from './components/footer.js';
 function RouteExt({
   component: Component,
   layout: Layout,
+  navbar: navBool,
+  footer: footBool,
   ...rest
 }) {
   return (
     <Route {...rest} render={(props) =>
       <>
-        <p id="annoying" onClick={function() {window.location.href="https://www.google.com/search?q=stupid"}}>
+        {/* <p id="annoying" onClick={function() {window.location.href="https://www.google.com/search?q=stupid"}}>
           Free $10,000! Click me
-        </p>
-        <NavBar Home About Login />
+        </p> */}
+        {function () {
+          if (navBool === true || navBool == null) {
+            return <NavBar Home About Login />
+          }
+        }()}
         <Layout {...props}>
           {function () {
             if (Component) {
-              <Component {...props} />
+              return <Component {...props} />
             } else {
-              <div />
+              return (
+                <>
+                </>
+              )
             }
-          }}
+          }()}
         </Layout>
-        <Footer id="footer" />
+        {function () {
+          if (footBool === true || footBool == null) {
+            return <Footer id="footer" />
+          }
+        }()}
       </>
     } />
   );
@@ -42,31 +56,10 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <RouteExt path="/login" layout={Login} />
-          <Route path="/signup">
-            <p id="annoying" onClick={function() {window.location.href="https://www.google.com/search?q=stupid"}}>
-              Free $10,000! Click me
-            </p>
-            <NavBar Home About Login />
-            <SignUp />
-            <Footer id="footer" />
-          </Route>
-          <Route path="/about">
-            <p id="annoying" onClick={function() {window.location.href="https://www.google.com/search?q=stupid"}}>
-              Free $10,000! Click me
-            </p>
-            <NavBar Home About Login />
-            <About />
-            <Footer id="footer" />
-          </Route>
-          <Route exact path="/">
-            <p id="annoying" onClick={function() {window.location.href="https://www.google.com/search?q=stupid"}}>
-              Free $10,000! Click me
-            </p>
-            <NavBar Home About Login />
-            <Home />
-            <Footer id="footer" />
-          </Route>
+          <RouteExt exact path="/login" layout={Login} />
+          <RouteExt exact path="/signup" layout={SignUp} />
+          <RouteExt exact path="/about" layout={About} />
+          <RouteExt exact path="/" layout={Home} />
           <Route  path="*">
             <div>
               Page Not Found 404

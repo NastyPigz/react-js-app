@@ -1,19 +1,19 @@
-.loginFormDiv {
+.signupFormDiv {
     color: #ffffff;
 }
 
-.loginFormContent {
+.signupFormContent {
     background-color:#36393f;
     display: flex;
     flex-direction: column;
-    width: 800px;
-    height: 400px;
+    width: 450px;
+    height: 500px;
     margin: auto;
     border-radius: 10px;
     place-items: flex-start;
 }
 
-.loginFormContent input {
+.signupFormContent input {
     background-color: rgba(136, 136, 136, 0.596);
     border-radius: 5px;
     padding: 8px;
@@ -22,46 +22,46 @@
     color: white;
 }
 
-.loginFormContent input:focus {
+.signupFormContent input:focus {
     outline: none;
     border-color: rgba(43, 125, 218, 0.692);
     border-width: 3px;
     transition: 0.5s;
 }
 
-#lformInput {
+#formInput {
     width: auto;
     position: relative;
 }
 
-.loginFormContent input::placeholder {
+.signupFormContent input::placeholder {
     color: rgb(194, 194, 194);
 }
 
-.loginFormContent span {
+.signupFormContent span {
     padding: 30px;
     font: 24px Ginto,"Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: auto;
 }
 
-.loginFormContent label{
+.signupFormContent label{
     display: block;
     position: absolute;
     left: 0;
     margin: 0px 30px;
 }
 
-.loginFormContent a {
+.signupFormContent a {
     color: white;
     text-decoration: none;
 }
 
-.loginFormContent a:hover {
+.signupFormContent a:hover {
     color: white;
     text-decoration: underline;
 }
 
-.loginFormContent .continueBtn {
+.signupFormContent .continueBtn {
     width: 85%;
     padding: 8px;
     color: white;
@@ -70,35 +70,35 @@
     border-radius: 5px;
 }
 
-.loginFormContent .formTos {
+.signupFormContent .formTos {
     padding: 5px 20px;
 }
 
 @media(max-width: 700px) {
-    .loginFormDiv {
+    .signupFormDiv {
         position: relative;
         top: 0;
         left: 0;
         display: flex;
-        height: auto;
+        height: 100vh;
         width: 100vw;
         justify-content: center;
         align-items: center;
         font-size: 25px;
     }
 
-    .loginFormContent {
+    .signupFormContent {
         background-color:#36393f;
         display: flex;
         flex-direction: column;
-        width: 100vw;
-        height: auto;
+        width: 450px;
+        height: 800px;
         margin: auto;
         border-radius: 0px;
         place-items: flex-start;
     }
 
-    .loginFormContent input {
+    .signupFormContent input {
         background-color: rgba(136, 136, 136, 0.596);
         border-radius: 5px;
         padding: 20px;
@@ -106,7 +106,7 @@
         width: 80%;
     }
 
-    .loginFormContent .continueBtn {
+    .signupFormContent .continueBtn {
         width: 85%;
         padding: 10px 35px;
         color: white;
@@ -116,12 +116,12 @@
         font-size: 30px;
     }
 
-    .loginFormContent .formTos {
+    .signupFormContent .formTos {
         padding: 5px 20px;
         font-size: 20px;
     }
 
-    .loginFormContent a {
+    .signupFormContent a {
         color: white;
         text-decoration: none;
         font-size: 20px;

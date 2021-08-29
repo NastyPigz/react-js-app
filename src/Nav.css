@@ -18,7 +18,8 @@
 
 .App .Navigation-Bar ul li{
   list-style: none;
-  padding: 2vh 4vh;
+  padding: 4.5vh 3vw;
+  font-size: 3vh;
 }
 
 .App .Navigation-Bar div{
@@ -28,5 +29,38 @@
 
 .App .Navigation-Bar div ul{
   display: flex;
+  margin: 0px;
+  padding: 0px;
 }
   
+@media(max-width: 700px) {
+  .App .Navigation-Bar div img{
+    display: none;
+    height: 0px;
+    margin: 0px;
+    border-radius: 0px;
+  }
+
+  .App .Navigation-Bar ul li a{
+    color: red;
+    text-decoration: none;
+  }
+
+  .App .Navigation-Bar ul li:focus{
+    background-color: #8a898931;
+  }
+
+  .App .Navigation-Bar ul li{
+    list-style: none;
+    padding: 2vh auto;
+  }
+
+  .App .Navigation-Bar div{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .App .Navigation-Bar div ul{
+    display: flex;
+  }
+}

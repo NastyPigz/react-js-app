@@ -31,7 +31,12 @@ body {
 
 #annoying {
   top: 30vh;
-  left: 20vh;
+  left: 20vw;
   position: fixed;
-  background-color: #ffffff;
+  background-color: #ffffff00;
+}
+
+.globalFooter {
+  margin-top: 10vh;
+  background-color: blue;
 }
