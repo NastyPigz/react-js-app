@@ -1,0 +1,8 @@
+{
+    "reminder": "REMINDER",
+    "pharmacy": "FIND PHARMACY",
+    "map": "OTHER STUFF (MAPS)?",
+    "list": {
+        "reminder": ["hello", "world"]
+    }
+}
