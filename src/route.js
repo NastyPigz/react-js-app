@@ -1,5 +1,8 @@
 import {LoginDiv} from './components/login.js';
 import {SignUpDiv} from './components/signup.js';
+import {PanelUI} from './components/panelUI.js';
+import './Panel.css';
+import './PanelAlt.css';
 
 export function Home() {
     return (
@@ -9,7 +12,7 @@ export function Home() {
         </p>
       </header>
     );
-};
+}
 
 export function About() {
     return (
@@ -19,7 +22,7 @@ export function About() {
         </p>
       </header>
     );
-};
+}
 
 export function Login() {
   return (
@@ -28,7 +31,7 @@ export function Login() {
       <LoginDiv />
     </div>
   );
-};
+}
 
 export function SignUp() {
   return (
@@ -37,4 +40,10 @@ export function SignUp() {
       <SignUpDiv />
     </div>
   );
-};
+}
+
+export function UserPanel() {
+  return (
+    <PanelUI />
+  )
+}

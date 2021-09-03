@@ -7,7 +7,7 @@ export function NavBar(props) {
     Object.keys(props).forEach((name) => {
         arr.push(
             <li key={name}>
-                <Link to={`/${name === "Home" ? '' : name.toLowerCase()}`}>{name}</Link>
+                <Link to={`/${name === "Home" ? '' : (name === "My" ? "@me" : name.toLowerCase())}`}>{name}</Link>
             </li>
         );
     });

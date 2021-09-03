@@ -2,7 +2,7 @@ import './App.css';
 import './Nav.css';
 import './Login.css';
 import './SignUp.css';
-import {Home, About, Login, SignUp} from './route.js';
+import {Home, About, Login, SignUp, UserPanel} from './route.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,7 +26,9 @@ function RouteExt({
         </p> */}
         {function () {
           if (navBool === true || navBool == null) {
-            return <NavBar Home About Login />
+            if (localStorage !== undefined) {
+              return (localStorage.getItem("token") != null) ? <NavBar Home About My /> : <NavBar Home About Login />
+            }
           }
         }()}
         <Layout {...props}>
@@ -60,6 +62,7 @@ function App() {
           <RouteExt exact path="/signup" layout={SignUp} />
           <RouteExt exact path="/about" layout={About} />
           <RouteExt exact path="/" layout={Home} />
+          <RouteExt exact path="/@me" layout={UserPanel} footer={false} navbar={false} />
           <Route  path="*">
             <div>
               Page Not Found 404

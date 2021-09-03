@@ -27,6 +27,11 @@ export class LoginDiv extends React.Component {
     render() {
         return (
             <div id="loginForm" className="loginFormDiv">
+                {function() {
+                    if (localStorage.getItem("token") != null) {
+                        window.location.href = "/";
+                    }
+                }()}
                 <form id="formLogin" className="loginFormContent" onSubmit={this.loginSubmit}>
                     <span>Welcome Back!</span>
                     <div className="loginFormInput">
@@ -44,9 +49,12 @@ export class LoginDiv extends React.Component {
                         <div>
                             <button type="submit" className="continueBtn">Login</button>
                         </div>
-                        {/* Show Password and Sign Up */}
+                        {/* Show Password? */}
                         <div>
                             <a href="?forgotpassword=true">Forgot password?</a>
+                        </div>
+                        <div className="goSignDiv">
+                            <a href="/signup" className="goSign">Don't have an account?</a>
                         </div>
                         <div>
                             <p className="formTos">By creating an account you agree to our <a href="tos" style={{color:"dodgerblue"}}>Terms of Service</a>.</p>
