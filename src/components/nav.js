@@ -6,7 +6,7 @@ export function NavBar(props) {
     let arr = [];
     Object.keys(props).forEach((name) => {
         arr.push(
-            <li key={name}>
+            <li key={name} onClick={() => window.location.href = `/${name === "Home" ? '' : (name === "My" ? "@me" : name.toLowerCase())}`}>
                 <Link to={`/${name === "Home" ? '' : (name === "My" ? "@me" : name.toLowerCase())}`}>{name}</Link>
             </li>
         );

@@ -2,7 +2,8 @@ import './App.css';
 import './Nav.css';
 import './Login.css';
 import './SignUp.css';
-import {Home, About, Login, SignUp, UserPanel} from './route.js';
+import './covid.css';
+import {Home, About, Login, SignUp, UserPanel, CovidData} from './route.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -63,6 +64,7 @@ function App() {
           <RouteExt exact path="/about" layout={About} />
           <RouteExt exact path="/" layout={Home} />
           <RouteExt exact path="/@me" layout={UserPanel} footer={false} navbar={false} />
+          <RouteExt exact path="/covid" layout={CovidData} footer={false} navbar={false} />
           <Route  path="*">
             <div>
               Page Not Found 404

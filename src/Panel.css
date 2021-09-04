@@ -33,7 +33,6 @@ body {
 }
 
 .rightSlide {
-    /* overflow-y: hidden; */
     position: absolute;
     display: flex;
     flex-direction: column;

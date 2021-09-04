@@ -3,6 +3,8 @@
     "pharmacy": "FIND PHARMACY",
     "map": "OTHER STUFF (MAPS)?",
     "list": {
-        "reminder": ["hello", "world"]
+        "reminder": ["hello", "world"],
+        "pharmacy": ["hello", "world"],
+        "map": ["hello", "world"]
     }
 }

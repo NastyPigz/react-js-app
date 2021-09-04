@@ -40,6 +40,7 @@ export function PanelUI () {
             className="mainIcon"
             alt="mainIcon"
             src="https://pbs.twimg.com/profile_images/905183271046193153/q_P1KBUJ_400x400.jpg"
+            onClick={() => window.location.href="/"}
           />
           <img
             alt="Icon1"
@@ -47,7 +48,7 @@ export function PanelUI () {
               setCurrent("reminder");
             }}
             src="https://static.thenounproject.com/png/1604214-200.png" 
-            style={{backgroundColor: clicked ? 'transparent' : 'white'}}
+            style={{backgroundColor: clicked ? 'white' : 'white'}}
           />
           <img 
             alt="Icon2"
@@ -72,6 +73,10 @@ export function PanelUI () {
         </div>
         <div className={classNames.right}>
           <button className="modeToggle" onClick={handleClick} id="toggleBtn">Toggle</button>
+          <div className="">
+            Welcome Back! {localStorage.getItem("username") === undefined ? "Guest" : localStorage.getItem("username")}
+            <img style={{display: "block"}} alt=" " src="123123"></img>
+          </div>
           <Calendar id="panelCalender" calendarType="US" />
           {/* <div>Test</div>
           <div>Test</div>

@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(36, 37, 41);
+    color: #fff;
+    overflow-y: scroll !important;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

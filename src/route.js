@@ -1,6 +1,7 @@
 import {LoginDiv} from './components/login.js';
 import {SignUpDiv} from './components/signup.js';
 import {PanelUI} from './components/panelUI.js';
+import {Covid19} from './components/covid.js';
 import './Panel.css';
 import './PanelAlt.css';
 
@@ -45,5 +46,13 @@ export function SignUp() {
 export function UserPanel() {
   return (
     <PanelUI />
+  )
+}
+
+export function CovidData() {
+  return (
+    <>
+      <Covid19 />
+    </>
   )
 }
