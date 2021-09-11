@@ -20,3 +20,4 @@ function Covid19() {
 }
 
 export {Covid19};
+

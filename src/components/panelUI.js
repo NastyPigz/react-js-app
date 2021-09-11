@@ -14,7 +14,6 @@ export function PanelUI () {
     function handleClick () {
         if (clicked) {
             setClicked(false);
-            document.body.style.backgroundColor = "#111827";
             setClassNames({
                 main: "mainPanel",
                 left: "leftSlide",
@@ -23,7 +22,6 @@ export function PanelUI () {
             });
         } else {
             setClicked(true);
-            document.body.style.backgroundColor = "papayawhip";
             setClassNames({
                 main: "mainPan",
                 left: "leftSlid",

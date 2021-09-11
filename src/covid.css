@@ -1,6 +1,7 @@
 body {
-    background-color: rgb(36, 37, 41);
-    color: #fff;
+    /* background-color: rgb(36, 37, 41); */
+    background-color: rgb(255, 255, 255);
+    color: #000;
     overflow-y: scroll !important;
 }
 

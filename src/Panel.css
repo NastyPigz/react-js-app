@@ -1,6 +1,8 @@
-body {
+.mainPanel {
     background-color: #111827;
     overflow: hidden;
+    width: 100vw;
+    height: 100vh;
 }
 
 .leftSlide {
