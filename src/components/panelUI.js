@@ -4,6 +4,8 @@ import db from './panelitems.json';
 
 export function PanelUI () {
     const [clicked, setClicked] = useState(false);
+    const [taskLd, setTaskClicked] = useState(false);
+    const [taskLd2, setTaskClicked2] = useState(false);
     const [classNames, setClassNames] = useState({
         main: "mainPanel",
         left: "leftSlide",
@@ -11,6 +13,26 @@ export function PanelUI () {
         mid: "midSlide"
     });
     const [current, setCurrent] = useState("reminder");
+    function handleTaskClick() {
+      if (taskLd) {
+        setTaskClicked(false);
+        document.getElementById("taskBtn").style.backgroundColor = "green";
+        document.getElementById("addTaskC").style.display = "none";
+      } else {
+        setTaskClicked(true);
+        document.getElementById("taskBtn").style.backgroundColor = "red";
+        document.getElementById("addTaskC").style.display = "block";
+      }
+    }
+    function handleTaskClick2() {
+      if (taskLd2) {
+        setTaskClicked2(false);
+        document.getElementById("taskBtn2").style.backgroundColor = "green";
+      } else {
+        setTaskClicked2(true);
+        document.getElementById("taskBtn2").style.backgroundColor = "red";
+      }
+    }
     function handleClick () {
         if (clicked) {
             setClicked(false);
@@ -30,6 +52,17 @@ export function PanelUI () {
             });
         }
     }
+    const [data, setData] = useState({
+      reminder: [],
+      pharmacy: [],
+      map: []
+    })
+    if (localStorage.getItem("reminders") == null || localStorage.getItem("reminders") === "") {
+      localStorage.setItem("reminders", JSON.stringify([]));
+    } else {
+      setData({...data, reminder: [JSON.parse(localStorage.getItem("reminders"))]})
+    }
+
     return (
     <>
       <div className={classNames.main}>
@@ -65,8 +98,23 @@ export function PanelUI () {
         </div>
         <div className={classNames.mid}>
           <div className="panelName">{db[current]}</div>
+          <button onClick={handleTaskClick} className="taskBtn" id="taskBtn">{taskLd ? "Close" : "Add Task"}</button>
+          <button onClick={handleTaskClick2} className="taskBtn2" id="taskBtn2">{taskLd2 ? "Close" : "Del Task"}</button>
+          <div className="addTaskC" id="addTaskC" style={{display: "none"}}>
+            <form onSubmit={(e) => {e.preventDefault(); setData({...data, reminder: [...data.reminder, document.getElementById("addTitle").value]}); document.getElementById("taskBtn").click();}}>
+              <input type="text" placeholder="Name" />
+              <input type="text" placeholder="Title" id="addTitle" />
+              <input type="text" placeholder="Content" />
+              <input type="submit" placeholder="Submit" />
+            </form>
+          </div>
+          <div className="delTaskC" id="delTaskC">
+            <form onSubmit={(e) => {e.preventDefault()}}>
+
+            </form>
+          </div>
           <ul>
-            {db.list[current].map((item) => <li>{item}</li>)}
+            {data[current].map((item) => <li>{item}</li>).length === 0 ? [<li>None</li>] : data[current].map((item) => <li>{item}</li>)}
           </ul>
         </div>
         <div className={classNames.right}>
@@ -76,56 +124,6 @@ export function PanelUI () {
             <img style={{display: "block"}} alt=" " src="123123"></img>
           </div>
           <Calendar id="panelCalender" calendarType="US" />
-          {/* <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div>
-          <div>Test</div> */}
         </div>
         {function() {
           if (localStorage !== undefined) {

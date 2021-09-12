@@ -154,8 +154,72 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 12.5vh;
+    margin-top: 17.5vh;
     margin-left: 1vw;
     padding: 0px;
     font-family: monospace;
+}
+
+.midSlide .taskBtn {
+    margin: 10px;
+    margin-top: 70px;
+    display: block;
+    position: absolute;
+    width: 7vw;
+    height: 5vh;
+    padding-top: 5px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    font-family:  ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    transition: font-size 0.5s;
+}
+
+.midSlide .taskBtn:hover {
+    font-size: 10px;
+}
+
+.midSlide .taskBtn2 {
+    margin: 10px;
+    margin-left: 8vw;
+    margin-top: 70px;
+    display: block;
+    position: absolute;
+    width: 7vw;
+    height: 5vh;
+    padding-top: 5px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    font-family:  ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    transition: font-size 0.5s;
+}
+
+.midSlide .taskBtn2:hover {
+    font-size: 10px;
+}
+
+.midSlide .addTaskC form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25vw;
+    margin-top: 35vh;
+}
+
+.midSlide .addTaskC form input {
+    display: block;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family:  ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+}
+
+.midSlide .addTaskC form input[type="submit"] {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
 }
