@@ -1,4 +1,5 @@
 import React from 'react';
+import startURL from './start.js';
 
 export class LoginDiv extends React.Component {
     constructor (props) {
@@ -22,6 +23,31 @@ export class LoginDiv extends React.Component {
     loginSubmit(event) {
         alert("Submitted!");
         event.preventDefault();
+        (async () => {
+            const Response = await fetch(`${startURL}/api/auth/login/`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username: document.getElementById("uname").value, password: document.getElementById("psw").value})
+            });
+            const content = await Response.json();
+            if (content.username?.[0]) {
+                alert(content.username?.[0]);
+            } else {
+                if (typeof(localStorage) != undefined) {
+                    localStorage.setItem("email", content.user.email);
+                    localStorage.setItem("token", content.token);
+                    localStorage.setItem("username", content.user.username);
+                    localStorage.setItem("id", content.user.id);
+                    window.location.href = "/";
+                } else {
+                    alert("Your browser does not support our system. You have to relogin every time from now on. Consider upgrading!");
+                }
+            }
+            return content;
+        })();
     }
 
     render() {

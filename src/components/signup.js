@@ -1,4 +1,5 @@
 import React from 'react';
+import startURL from './start.js'
 
 export class SignUpDiv extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export class SignUpDiv extends React.Component {
     signupSubmit(event) {
         event.preventDefault();
         (async () => {
-            const Response = await fetch('http://127.0.0.1:8000/api/auth/register/', {
+            const Response = await fetch(`${startURL}/api/auth/register/`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -21,7 +22,6 @@ export class SignUpDiv extends React.Component {
             body: JSON.stringify({username: document.getElementById("usname").value, password: document.getElementById("pswd").value, email: document.getElementById("email").value})
             });
             const content = await Response.json();
-            console.log(content);
             if (content.username?.[0]) {
                 alert(content.username?.[0]);
             } else {
