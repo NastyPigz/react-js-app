@@ -223,3 +223,26 @@
     color: white;
     border-radius: 5px;
 }
+
+.midSlide .delTaskC form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25vw;
+    margin-top: 35vh;
+}
+
+.midSlide .delTaskC form input {
+    display: block;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family:  ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+}
+
+.midSlide .delTaskC form input[type="submit"] {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}

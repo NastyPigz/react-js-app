@@ -18,6 +18,7 @@ export function PanelUI () {
         setTaskClicked(false);
         document.getElementById("taskBtn").style.backgroundColor = "green";
         document.getElementById("addTaskC").style.display = "none";
+        document.getElementById("addTitle").value = "";
       } else {
         setTaskClicked(true);
         document.getElementById("taskBtn").style.backgroundColor = "red";
@@ -28,9 +29,12 @@ export function PanelUI () {
       if (taskLd2) {
         setTaskClicked2(false);
         document.getElementById("taskBtn2").style.backgroundColor = "green";
+        document.getElementById("delTaskC").style.display = "none";
+        document.getElementById("delTitle").value="";
       } else {
         setTaskClicked2(true);
         document.getElementById("taskBtn2").style.backgroundColor = "red";
+        document.getElementById("delTaskC").style.display = "block";
       }
     }
     function handleClick () {
@@ -57,11 +61,16 @@ export function PanelUI () {
       pharmacy: [],
       map: []
     })
-    if (localStorage.getItem("reminders") == null || localStorage.getItem("reminders") === "") {
-      localStorage.setItem("reminders", JSON.stringify([]));
-    } else {
-      setData({...data, reminder: [JSON.parse(localStorage.getItem("reminders"))]})
-    }
+    setTimeout(
+      () => {
+        if (localStorage.getItem("reminders") === undefined) {
+          localStorage.setItem("reminders", JSON.stringify([]));
+        } else {
+          localStorage.setItem("reminders", JSON.stringify(data.reminder))
+        }
+      },
+      0
+    )
 
     return (
     <>
@@ -108,9 +117,10 @@ export function PanelUI () {
               <input type="submit" placeholder="Submit" />
             </form>
           </div>
-          <div className="delTaskC" id="delTaskC">
-            <form onSubmit={(e) => {e.preventDefault()}}>
-
+          <div className="delTaskC" id="delTaskC" style={{display: "none", position: "absolute"}}>
+            <form onSubmit={(e) => {e.preventDefault(); setData({...data, reminder: data.reminder.filter((val) => val === document.getElementById("delTitle").value ? false : true)}); document.getElementById("taskBtn2").click();}}>
+              <input type="text" placeholder="Title " id="delTitle" />
+              <input type="submit" placeholder="Submit" />
             </form>
           </div>
           <ul>

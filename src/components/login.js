@@ -41,6 +41,8 @@ export class LoginDiv extends React.Component {
                     localStorage.setItem("token", content.token);
                     localStorage.setItem("username", content.user.username);
                     localStorage.setItem("id", content.user.id);
+                    console.log(content.user)
+                    window.alert("hi")
                     window.location.href = "/";
                 } else {
                     alert("Your browser does not support our system. You have to relogin every time from now on. Consider upgrading!");
