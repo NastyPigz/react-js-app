@@ -172,6 +172,7 @@
     border-radius: 10px;
     background-color: green;
     color: white;
+    font-size: 1vw;
     font-family:  ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
     transition: font-size 0.5s;
 }
@@ -193,6 +194,7 @@
     border-radius: 10px;
     background-color: green;
     color: white;
+    font-size: 1vw;
     font-family:  ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
     transition: font-size 0.5s;
 }
@@ -245,4 +247,19 @@
     background-color: green;
     color: white;
     border-radius: 5px;
+}
+
+.rightSlide .welt {
+    position: absolute;
+    margin-top: 2.5vh;
+    margin-left: 1vw;
+    width: 10vw;
+    height: 10vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    margin-right: 7vw;
+    border-radius: 5%;
+    background-color: white;
 }

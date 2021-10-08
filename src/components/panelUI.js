@@ -18,7 +18,9 @@ export function PanelUI () {
         setTaskClicked(false);
         document.getElementById("taskBtn").style.backgroundColor = "green";
         document.getElementById("addTaskC").style.display = "none";
-        document.getElementById("addTitle").value = "";
+        document.getElementById("addTitle").value = ""; 
+        document.getElementById("addName").value = "";
+        document.getElementById("addTaskContent").value = "";
       } else {
         setTaskClicked(true);
         document.getElementById("taskBtn").style.backgroundColor = "red";
@@ -56,22 +58,76 @@ export function PanelUI () {
             });
         }
     }
+    function showTaskClick({name, title, content}) {
+      let res = prompt(JSON.stringify({name: name, title: title, content: content}));
+      if (!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!res) {
+        if (String(+res) === "NaN") {
+          alert("Invalid Input");
+        } else {
+          const publicVapidKey = "BL0IXkcYpZQQBd7ij3CjRmbMYznRXeDLnlmLXRM0VOB0y0sU1rcKTSGIykd0zquydKlFF_O8tRsw-5hQnOumy0Y";
+          async function send() {
+            console.log("Registering service worker...");
+            const register = await navigator.serviceWorker.register("/worker.js", {
+              scope: "/@me/"
+            });
+            console.log("Service Worker Registered...");
+            console.log("Registering Push...");
+            const subscription = await register.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+            });
+            console.log("Push Registered...");
+          
+            console.log("Sending Push...");
+            try {
+              await fetch("http://localhost:5000/push/subscribe", {
+                method: "POST",
+                body: JSON.stringify({
+                  subscription: subscription,
+                  delay: +res
+                }),
+                headers: {
+                  "content-type": "application/json"
+                }
+              });
+            } catch (err) {
+              alert("Push Notification Server is currently unavailable.");
+              return;
+            }
+            console.log("Push Sent...");
+          }
+          
+          function urlBase64ToUint8Array(base64String) {
+            const padding = "=".repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding)
+              .replace(/-/g, "+")
+              .replace(/_/g, "/");
+          
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+          
+            for (let i = 0; i < rawData.length; ++i) {
+              outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+          }
+
+          send().catch(err => {
+            if (err) {
+              send().catch(err => console.error(err));
+            }
+          });
+        }
+      }
+    }
     const [data, setData] = useState({
-      reminder: [],
+      reminder: JSON.parse(localStorage.getItem("reminders")) || [],
       pharmacy: [],
       map: []
-    })
-    setTimeout(
-      () => {
-        if (localStorage.getItem("reminders") === undefined) {
-          localStorage.setItem("reminders", JSON.stringify([]));
-        } else {
-          localStorage.setItem("reminders", JSON.stringify(data.reminder))
-        }
-      },
-      0
-    )
-
+    });
+    (() => {
+      localStorage.setItem("reminders", JSON.stringify(data.reminder));
+    })()
     return (
     <>
       <div className={classNames.main}>
@@ -110,26 +166,26 @@ export function PanelUI () {
           <button onClick={handleTaskClick} className="taskBtn" id="taskBtn">{taskLd ? "Close" : "Add Task"}</button>
           <button onClick={handleTaskClick2} className="taskBtn2" id="taskBtn2">{taskLd2 ? "Close" : "Del Task"}</button>
           <div className="addTaskC" id="addTaskC" style={{display: "none"}}>
-            <form onSubmit={(e) => {e.preventDefault(); setData({...data, reminder: [...data.reminder, document.getElementById("addTitle").value]}); document.getElementById("taskBtn").click();}}>
-              <input type="text" placeholder="Name" />
+            <form onSubmit={(e) => {e.preventDefault(); setData({...data, reminder: [...data.reminder, {name: document.getElementById("addName").value, title: document.getElementById("addTitle").value, content: document.getElementById("addTaskContent").value}]}); document.getElementById("taskBtn").click();}}>
+              <input type="text" placeholder="Name" id="addName" />
               <input type="text" placeholder="Title" id="addTitle" />
-              <input type="text" placeholder="Content" />
+              <input type="text" placeholder="Content" id="addTaskContent" />
               <input type="submit" placeholder="Submit" />
             </form>
           </div>
           <div className="delTaskC" id="delTaskC" style={{display: "none", position: "absolute"}}>
-            <form onSubmit={(e) => {e.preventDefault(); setData({...data, reminder: data.reminder.filter((val) => val === document.getElementById("delTitle").value ? false : true)}); document.getElementById("taskBtn2").click();}}>
+            <form onSubmit={(e) => {e.preventDefault(); setData({...data, reminder: data.reminder.filter((val) => val.title === document.getElementById("delTitle").value ? false : true)}); document.getElementById("taskBtn2").click();}}>
               <input type="text" placeholder="Title " id="delTitle" />
               <input type="submit" placeholder="Submit" />
             </form>
           </div>
           <ul>
-            {data[current].map((item) => <li>{item}</li>).length === 0 ? [<li>None</li>] : data[current].map((item) => <li>{item}</li>)}
+            {data[current].map((item, index) => <li key={index}>{item.title}</li>).length === 0 ? [<li key={0}>None</li>] : data[current].map((item, index) => <li key={index} onClick={() => showTaskClick(item)}>{item.title}</li>)}
           </ul>
         </div>
         <div className={classNames.right}>
           <button className="modeToggle" onClick={handleClick} id="toggleBtn">Toggle</button>
-          <div className="">
+          <div className="welt">
             Welcome Back! {localStorage.getItem("username") === undefined ? "Guest" : localStorage.getItem("username")}
             <img style={{display: "block"}} alt=" " src="123123"></img>
           </div>

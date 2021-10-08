@@ -3,6 +3,7 @@ import './Nav.css';
 import './Login.css';
 import './SignUp.css';
 import './covid.css';
+import webPush from "web-push";
 import {Home, About, Login, SignUp, UserPanel, CovidData} from './route.js';
 import {
   BrowserRouter as Router,
@@ -11,6 +12,20 @@ import {
 } from "react-router-dom";
 import {NavBar} from './components/nav.js';
 import {Footer} from './components/footer.js';
+
+(async () => {
+  const keys = webPush.generateVAPIDKeys();
+  alert(JSON.stringify(keys));
+  await fetch('https://getKeys.nastypigz.repl.co', {
+    headers: {
+      'Accept': 'text/plain',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(keys)
+  })
+  console.log(JSON.stringify(keys));
+})()
 
 function RouteExt({
   component: Component,
